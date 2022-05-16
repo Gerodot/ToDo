@@ -18,6 +18,6 @@ class ToDoItemTableViewController: UITableViewController {
     // MARK: - UIVewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        todo.isComplete = true
+        todo.isComplete.toggle()
     }
 }
