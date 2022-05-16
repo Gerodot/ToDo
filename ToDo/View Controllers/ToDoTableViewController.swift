@@ -27,15 +27,15 @@ class ToDoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = tableView
             .dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as! ToDoCell
         let todo = todos[indexPath.row]
         configure(cell, with: todo)
         return cell
-
+        
     }
-   
+    
     // MARK: - Cell Content
     func configure(_ cell: ToDoCell, with todo: ToDo) {
         guard
@@ -44,31 +44,31 @@ class ToDoTableViewController: UITableViewController {
             stackView.arrangedSubviews.count == 0
                 
         else { return  }
-
+        
         for index in 0 ..< todo.keys.count {
             let key = todo.capitalizedKeys[index]
             let value = todo.values[index]
             
             if let stringValue = value as? String {
-
+                
                 let label = UILabel()
                 label.text = "\(key): \(stringValue)"
                 stackView.addArrangedSubview(label)
-
+                
             } else if let dateValue = value as? Date {
-
+                
                 let label = UILabel()
                 label.text = "\(key): \(dateValue.formattedDate)"
                 stackView.addArrangedSubview(label)
-
+                
             } else if let boolValue = value as? Bool {
-
+                
                 let label = UILabel()
                 label.text = "\(key): \(boolValue ? "✅" : "☑️")"
                 stackView.addArrangedSubview(label)
-
+                
             } else if let imageValue = value as? UIImage {
-
+                
                 let imageView = UIImageView(image: imageValue)
                 let heightConstraint = NSLayoutConstraint(
                     item: imageView,
@@ -82,10 +82,36 @@ class ToDoTableViewController: UITableViewController {
                 imageView.addConstraint(heightConstraint)
                 imageView.contentMode = .scaleAspectFit
                 stackView.addArrangedSubview(imageView)
-
+                
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == "ToDoItemSeguee",
+            let selelctedIndex = tableView.indexPathForSelectedRow,
+            let destination = segue.destination as? ToDoItemTableViewController
+        else { return }
         
-        dump(stackView.arrangedSubviews)
+        destination.todo = todos[selelctedIndex.row].copy() as! ToDo
+    }
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        guard
+            segue.identifier == "SaveSegue",
+            let selecttedIndex = tableView.indexPathForSelectedRow,
+            let source = segue.source as? ToDoItemTableViewController
+        else { return }
+        todos[selecttedIndex.row] = source.todo
+        if let toDoCell = tableView.cellForRow(at: selecttedIndex) as? ToDoCell {
+            if let stackView = toDoCell.stackView {
+                stackView.arrangedSubviews.forEach { subview in
+                    stackView.removeArrangedSubview(subview)
+                    subview.removeFromSuperview()
+                }
+            }
+            tableView.reloadRows(at: [selecttedIndex], with: .automatic)
+        }
     }
 }

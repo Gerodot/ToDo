@@ -36,7 +36,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="stackView" destination="1Pq-M1-GJl" id="gGF-ui-87M"/>
-                                    <segue destination="ezg-UB-Trh" kind="show" id="TG3-D1-BgS"/>
+                                    <segue destination="ezg-UB-Trh" kind="show" identifier="ToDoItemSeguee" id="TG3-D1-BgS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -90,9 +90,21 @@
                             <outlet property="delegate" destination="ezg-UB-Trh" id="iiP-Bw-aGh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="To Do Item Details" id="icF-4T-SbZ"/>
+                    <navigationItem key="navigationItem" title="To Do Item Details" id="icF-4T-SbZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3jG-Sw-hDQ">
+                            <connections>
+                                <segue destination="ojj-Sb-lkB" kind="unwind" unwindAction="unwind:" id="1Wx-SU-v51"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="pvX-ad-O3m">
+                            <connections>
+                                <segue destination="ojj-Sb-lkB" kind="unwind" identifier="SaveSegue" unwindAction="unwind:" id="Om9-oV-Xuv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ysr-3c-kI2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ojj-Sb-lkB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="586" y="-66"/>
         </scene>
