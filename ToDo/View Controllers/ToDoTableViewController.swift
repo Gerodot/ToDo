@@ -27,16 +27,65 @@ class ToDoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath)
+
+        let cell = tableView
+            .dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as! ToDoCell
         let todo = todos[indexPath.row]
         configure(cell, with: todo)
         return cell
+
     }
    
     // MARK: - Cell Content
-    func configure(_ cell: UITableViewCell, with todo: ToDo) {
-        cell.textLabel?.text = todo.title
-        cell.detailTextLabel?.text = todo.isComplete ? "✅" : "☑️"
-        cell.imageView?.image = todo.image
+    func configure(_ cell: ToDoCell, with todo: ToDo) {
+        guard
+            
+            let stackView = cell.stackView,
+            stackView.arrangedSubviews.count == 0
+                
+        else { return  }
+
+        for index in 0 ..< todo.keys.count {
+            let key = todo.capitalizedKeys[index]
+            let value = todo.values[index]
+            
+            if let stringValue = value as? String {
+
+                let label = UILabel()
+                label.text = "\(key): \(stringValue)"
+                stackView.addArrangedSubview(label)
+
+            } else if let dateValue = value as? Date {
+
+                let label = UILabel()
+                label.text = "\(key): \(dateValue.formattedDate)"
+                stackView.addArrangedSubview(label)
+
+            } else if let boolValue = value as? Bool {
+
+                let label = UILabel()
+                label.text = "\(key): \(boolValue ? "✅" : "☑️")"
+                stackView.addArrangedSubview(label)
+
+            } else if let imageValue = value as? UIImage {
+
+                let imageView = UIImageView(image: imageValue)
+                let heightConstraint = NSLayoutConstraint(
+                    item: imageView,
+                    attribute: .height,
+                    relatedBy: .equal,
+                    toItem: nil,
+                    attribute: .height,
+                    multiplier: 1,
+                    constant: 350
+                )
+                imageView.addConstraint(heightConstraint)
+                imageView.contentMode = .scaleAspectFit
+                stackView.addArrangedSubview(imageView)
+
+            }
+        }
+        
+        dump(stackView.arrangedSubviews)
     }
 }

@@ -16,6 +16,8 @@
 		2D2F45B9283285F100935F43 /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2F45B8283285F100935F43 /* ToDoTableViewController.swift */; };
 		2D2F45BB2832862200935F43 /* ToDoItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2F45BA2832862200935F43 /* ToDoItemTableViewController.swift */; };
 		2D2F45BE283297F500935F43 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2F45BD283297F500935F43 /* ToDoCell.swift */; };
+		2DDBBE6B2832F12800CA8B46 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDBBE6A2832F12800CA8B46 /* String+Extension.swift */; };
+		2DDBBE6D2832F39E00CA8B46 /* Date+Extenson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDBBE6C2832F39E00CA8B46 /* Date+Extenson.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,9 @@
 		2D2F45B8283285F100935F43 /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 		2D2F45BA2832862200935F43 /* ToDoItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemTableViewController.swift; sourceTree = "<group>"; };
 		2D2F45BD283297F500935F43 /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		2DDBBE682832E95B00CA8B46 /* ToDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDo.entitlements; sourceTree = "<group>"; };
+		2DDBBE6A2832F12800CA8B46 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		2DDBBE6C2832F39E00CA8B46 /* Date+Extenson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extenson.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +67,13 @@
 		2D2F459D28327E1200935F43 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				2DDBBE692832F10700CA8B46 /* Extensions */,
+				2DDBBE682832E95B00CA8B46 /* ToDo.entitlements */,
+				2D2F45B228327FD200935F43 /* App */,
 				2D2F45BC283297C200935F43 /* Cells */,
 				2D2F45B42832801800935F43 /* Models */,
-				2D2F45B228327FD200935F43 /* App */,
-				2D2F45B72832838200935F43 /* View Controllers */,
 				2D2F45B328327FE200935F43 /* Storyboards */,
+				2D2F45B72832838200935F43 /* View Controllers */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -114,6 +121,15 @@
 				2D2F45BD283297F500935F43 /* ToDoCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		2DDBBE692832F10700CA8B46 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2DDBBE6A2832F12800CA8B46 /* String+Extension.swift */,
+				2DDBBE6C2832F39E00CA8B46 /* Date+Extenson.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +205,8 @@
 			files = (
 				2D2F45B62832802700935F43 /* ToDo.swift in Sources */,
 				2D2F45BE283297F500935F43 /* ToDoCell.swift in Sources */,
+				2DDBBE6B2832F12800CA8B46 /* String+Extension.swift in Sources */,
+				2DDBBE6D2832F39E00CA8B46 /* Date+Extenson.swift in Sources */,
 				2D2F45B9283285F100935F43 /* ToDoTableViewController.swift in Sources */,
 				2D2F45BB2832862200935F43 /* ToDoItemTableViewController.swift in Sources */,
 				2D2F459F28327E1200935F43 /* AppDelegate.swift in Sources */,
@@ -337,6 +355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToDo/ToDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XCNPSXVE8H;
@@ -354,6 +373,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.gerasimof.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -365,6 +385,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToDo/ToDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XCNPSXVE8H;
@@ -382,6 +403,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.gerasimof.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -16,34 +16,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" textLabel="G2c-Pb-Adw" detailTextLabel="EZQ-4E-uuy" imageView="hcQ-ea-D7l" style="IBUITableViewCellStyleSubtitle" id="1QY-3c-50F" customClass="ToDoCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" id="1QY-3c-50F" customClass="ToDoCell" customModule="ToDo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="22.333333969116211"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1QY-3c-50F" id="JJX-oB-96l">
-                                    <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="22.333333969116211"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G2c-Pb-Adw">
-                                            <rect key="frame" x="79" y="7.0000000000000009" width="25" height="14.333333333333334"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EZQ-4E-uuy">
-                                            <rect key="frame" x="79" y="23.333333333333336" width="40.666666666666664" height="13.333333333333334"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" image="bread" id="hcQ-ea-D7l">
-                                            <rect key="frame" x="20" y="0.0" width="44" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Pq-M1-GJl">
+                                            <rect key="frame" x="20" y="11" width="388" height="0.33333333333333393"/>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1Pq-M1-GJl" firstAttribute="top" secondItem="JJX-oB-96l" secondAttribute="topMargin" id="8OB-cY-6Uy"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="1Pq-M1-GJl" secondAttribute="bottom" id="Qld-Ld-PwI"/>
+                                        <constraint firstItem="1Pq-M1-GJl" firstAttribute="leading" secondItem="JJX-oB-96l" secondAttribute="leadingMargin" id="cI8-KJ-VtX"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="1Pq-M1-GJl" secondAttribute="trailing" id="zTs-mx-keH"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="stackView" destination="1Pq-M1-GJl" id="gGF-ui-87M"/>
                                     <segue destination="ezg-UB-Trh" kind="show" id="TG3-D1-BgS"/>
                                 </connections>
                             </tableViewCell>
@@ -106,7 +98,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bread" width="4481" height="4480"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

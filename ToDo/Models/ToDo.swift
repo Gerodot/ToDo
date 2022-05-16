@@ -27,4 +27,16 @@ class ToDo {
         self.notes = notes
         self.image = image
     }
+
+    var capitalizedKeys: [String] {
+        return keys.map { $0.capitalizedWithSpaces }
+    }
+    var keys: [String] {
+        return Mirror(reflecting: self).children.compactMap { $0.label }
+    }
+
+    var values: [Any?] {
+        return Mirror(reflecting: self).children.map { $0.value }
+    }
+    
 }
