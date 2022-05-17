@@ -13,7 +13,7 @@ class ToDo {
     var dueDate: Date
     var notes: String?
     var image: UIImage?
-    
+
     init (
         title: String = "",
         isComplete: Bool = false,
@@ -38,7 +38,7 @@ class ToDo {
     var values: [Any?] {
         return Mirror(reflecting: self).children.map { $0.value }
     }
-   
+
     func copy() -> Any {
         let newTodo = ToDo(
             title: title,
@@ -46,7 +46,7 @@ class ToDo {
             dueDate: dueDate,
             notes: notes,
             image: image?.copy() as? UIImage
-            )
+        )
         return newTodo
     }
 }
