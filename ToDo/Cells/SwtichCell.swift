@@ -8,5 +8,5 @@
 import UIKit
 
 class SwtichCell: UITableViewCell {
-    @IBOutlet var switchVoew: UISwitch!
+    @IBOutlet var switchVoew: SectionSwich!
 }

@@ -8,5 +8,5 @@
 import UIKit
 
 class TextFieldCell: UITableViewCell {
-    @IBOutlet var textField: UITextField!
+    @IBOutlet var textField: SectionTextField!
 }

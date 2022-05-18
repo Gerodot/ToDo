@@ -21,7 +21,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="388" height="22.333333969116211"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Pq-M1-GJl">
+                                        <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Pq-M1-GJl">
                                             <rect key="frame" x="20" y="11" width="348" height="0.33333333333333393"/>
                                         </stackView>
                                     </subviews>
@@ -63,7 +63,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ls5-cu-Yvq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1451" y="-66"/>
+            <point key="canvasLocation" x="-1043" y="-66"/>
         </scene>
         <!--To Do Item Details-->
         <scene sceneID="oKb-mJ-guO">
@@ -80,7 +80,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="388" height="41.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dMl-7x-tKq">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dMl-7x-tKq" customClass="SectionTextField" customModule="ToDo" customModuleProvider="target">
                                             <rect key="frame" x="20" y="10.999999999999998" width="348" height="19.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -98,14 +98,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DateCell" id="hoY-g7-RlC" customClass="DateCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="72.999998092651367" width="388" height="43.333332061767578"/>
+                                <rect key="frame" x="20" y="72.999998092651367" width="388" height="42.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hoY-g7-RlC" id="aJo-x3-jXs">
-                                    <rect key="frame" x="0.0" y="0.0" width="388" height="43.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="42.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frr-mR-Ytn">
-                                            <rect key="frame" x="20" y="10.999999999999998" width="348" height="21.333333333333329"/>
+                                            <rect key="frame" x="20" y="11.000000000000002" width="348" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -123,20 +123,20 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DatePickerCell" id="OdO-cn-buS" customClass="DatePickerCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="116.33333015441895" width="388" height="238.33332824707031"/>
+                                <rect key="frame" x="20" y="115.66666603088379" width="388" height="238.33332824707031"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OdO-cn-buS" id="Qo2-jz-OOH">
                                     <rect key="frame" x="0.0" y="0.0" width="388" height="238.33332824707031"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="DgV-mj-OAI">
+                                        <datePicker contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="DgV-mj-OAI" customClass="SectionDatePicker" customModule="ToDo" customModuleProvider="target">
                                             <rect key="frame" x="20" y="11" width="348" height="216.33333333333334"/>
                                         </datePicker>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="DgV-mj-OAI" secondAttribute="trailing" id="QZW-Nf-wzh"/>
                                         <constraint firstItem="DgV-mj-OAI" firstAttribute="leading" secondItem="Qo2-jz-OOH" secondAttribute="leadingMargin" id="Zlm-pM-6ka"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="DgV-mj-OAI" secondAttribute="bottom" id="hou-kZ-9si"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="DgV-mj-OAI" secondAttribute="bottom" priority="750" id="hou-kZ-9si"/>
                                         <constraint firstItem="DgV-mj-OAI" firstAttribute="top" secondItem="Qo2-jz-OOH" secondAttribute="topMargin" id="pr0-Oc-BCZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -144,22 +144,25 @@
                                     <outlet property="datePicker" destination="DgV-mj-OAI" id="CXz-WP-Y2o"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCell" id="6dB-u5-J4j" customClass="ImageCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="354.66665840148926" width="388" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="77" id="6dB-u5-J4j" customClass="ImageCell" customModule="ToDo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="353.9999942779541" width="388" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6dB-u5-J4j" id="FJl-Nk-ueh">
-                                    <rect key="frame" x="0.0" y="0.0" width="388" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="77"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SnM-Un-5y5">
-                                            <rect key="frame" x="0.0" y="0.0" width="388" height="43.666666666666664"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SnM-Un-5y5">
+                                            <rect key="frame" x="0.0" y="0.0" width="388" height="77"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="SnM-Un-5y5" secondAttribute="height" multiplier="1:1" id="ymh-2X-HE5"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="SnM-Un-5y5" secondAttribute="trailing" id="VZ0-TK-cna"/>
-                                        <constraint firstItem="SnM-Un-5y5" firstAttribute="leading" secondItem="FJl-Nk-ueh" secondAttribute="leading" id="aFd-VE-Ppn"/>
-                                        <constraint firstItem="SnM-Un-5y5" firstAttribute="top" secondItem="FJl-Nk-ueh" secondAttribute="top" id="eUZ-Z8-XAy"/>
-                                        <constraint firstAttribute="bottom" secondItem="SnM-Un-5y5" secondAttribute="bottom" id="tbP-wm-f1G"/>
+                                        <constraint firstItem="SnM-Un-5y5" firstAttribute="leading" secondItem="FJl-Nk-ueh" secondAttribute="leading" id="Ax4-UI-HWn"/>
+                                        <constraint firstAttribute="bottom" secondItem="SnM-Un-5y5" secondAttribute="bottom" id="QJg-Hs-fJd"/>
+                                        <constraint firstItem="SnM-Un-5y5" firstAttribute="top" secondItem="FJl-Nk-ueh" secondAttribute="top" id="Usu-An-Rsu"/>
+                                        <constraint firstAttribute="trailing" secondItem="SnM-Un-5y5" secondAttribute="trailing" id="tsz-jr-iaZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -167,13 +170,13 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SwtichCell" id="1nh-mD-0Ab" customClass="SwtichCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="398.33332633972168" width="388" height="43.666667938232422"/>
+                                <rect key="frame" x="20" y="430.9999942779541" width="388" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1nh-mD-0Ab" id="n87-R3-7dt">
                                     <rect key="frame" x="0.0" y="0.0" width="388" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QRw-EL-QIJ">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QRw-EL-QIJ" customClass="SectionSwich" customModule="ToDo" customModuleProvider="target">
                                             <rect key="frame" x="169.66666666666666" y="6.3333333333333321" width="51" height="30.999999999999996"/>
                                         </switch>
                                     </subviews>
@@ -208,7 +211,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ysr-3c-kI2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="ojj-Sb-lkB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="586" y="-66"/>
+            <point key="canvasLocation" x="393.92523364485982" y="-66.090712742980571"/>
         </scene>
     </scenes>
 </document>

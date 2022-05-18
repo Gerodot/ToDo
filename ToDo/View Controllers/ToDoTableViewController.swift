@@ -41,8 +41,8 @@ class ToDoTableViewController: UITableViewController {
         guard
             let stackView = cell.stackView,
             stackView.arrangedSubviews.count == 0
-            else { return }
-
+        else { return }
+        
         for index in 0 ..< todo.keys.count {
             let key = todo.capitalizedKeys[index]
             let value = todo.values[index]
@@ -66,19 +66,19 @@ class ToDoTableViewController: UITableViewController {
                 stackView.addArrangedSubview(label)
 
             } else if let imageValue = value as? UIImage {
-
                 let imageView = UIImageView(image: imageValue)
-                let heightConstraint = NSLayoutConstraint(
-                    item: imageView,
-                    attribute: .height,
-                    relatedBy: .equal,
-                    toItem: nil,
-                    attribute: .height,
-                    multiplier: 1,
-                    constant: 350
-                )
-                imageView.addConstraint(heightConstraint)
-                imageView.contentMode = .scaleAspectFit
+                imageView.heightAnchor.constraint(equalToConstant: CGFloat(300)).isActive = true
+//                let heightConstraint = NSLayoutConstraint(
+//                    item: imageView,
+//                    attribute: .height,
+//                    relatedBy: .equal,
+//                    toItem: nil,
+//                    attribute: .height,
+//                    multiplier: 1,
+//                    constant: 350
+//                )
+//                imageView.addConstraint(heightConstraint)
+                imageView.contentMode = .scaleAspectFit  
                 stackView.addArrangedSubview(imageView)
 
             }
