@@ -84,12 +84,8 @@ class ToDoTableViewController: UITableViewController {
                 let button = UIButton()
                 button.setImage(imageValue, for: .normal)
                 stackView.addArrangedSubview(button)
-                
-                
-                
 
             } else if let imageValue = value as? UIImage {
-                
                 
                 // image scaling byaspect and clipping
                 let imageView = UIImageView(image: imageValue)
@@ -109,6 +105,8 @@ class ToDoTableViewController: UITableViewController {
                 stackView.addArrangedSubview(imageView)
 
             }
+            
+            //TODO: - Place all elements except the image in a horizontal stack with paddings
         }
     }
 
