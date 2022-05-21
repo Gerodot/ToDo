@@ -15,21 +15,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" id="1QY-3c-50F" customClass="ToDoCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="31.666666030883789" width="388" height="22.333333969116211"/>
+                                <rect key="frame" x="20" y="31.666666030883789" width="388" height="44.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1QY-3c-50F" id="JJX-oB-96l">
-                                    <rect key="frame" x="0.0" y="0.0" width="388" height="22.333333969116211"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="44.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Pq-M1-GJl">
-                                            <rect key="frame" x="20" y="11" width="348" height="0.33333333333333393"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="388" height="44.333333333333336"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="tYg-p1-pBk"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="1Pq-M1-GJl" firstAttribute="top" secondItem="JJX-oB-96l" secondAttribute="topMargin" id="8OB-cY-6Uy"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="1Pq-M1-GJl" secondAttribute="bottom" id="Qld-Ld-PwI"/>
-                                        <constraint firstItem="1Pq-M1-GJl" firstAttribute="leading" secondItem="JJX-oB-96l" secondAttribute="leadingMargin" id="cI8-KJ-VtX"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="1Pq-M1-GJl" secondAttribute="trailing" id="zTs-mx-keH"/>
+                                        <constraint firstItem="1Pq-M1-GJl" firstAttribute="leading" secondItem="JJX-oB-96l" secondAttribute="leading" id="LYR-Dd-LvO"/>
+                                        <constraint firstItem="1Pq-M1-GJl" firstAttribute="top" secondItem="JJX-oB-96l" secondAttribute="top" id="bma-0H-s9B"/>
+                                        <constraint firstAttribute="trailing" secondItem="1Pq-M1-GJl" secondAttribute="trailing" id="sbY-ld-4wr"/>
+                                        <constraint firstAttribute="bottom" secondItem="1Pq-M1-GJl" secondAttribute="bottom" id="wPf-Zv-qoX"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -74,15 +77,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextFieldCell" id="vT6-bw-6Pf" customClass="TextFieldCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="31.666666030883789" width="388" height="41.333332061767578"/>
+                                <rect key="frame" x="20" y="31.666666030883789" width="388" height="44.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vT6-bw-6Pf" id="ufe-xB-4Gf">
-                                    <rect key="frame" x="0.0" y="0.0" width="388" height="41.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="44.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dMl-7x-tKq" customClass="SectionTextField" customModule="ToDo" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="10.999999999999998" width="348" height="19.333333333333329"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="20" y="10.999999999999998" width="348" height="22.333333333333329"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -98,14 +101,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DateCell" id="hoY-g7-RlC" customClass="DateCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="72.999998092651367" width="388" height="42.666667938232422"/>
+                                <rect key="frame" x="20" y="75.999998092651367" width="388" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hoY-g7-RlC" id="aJo-x3-jXs">
-                                    <rect key="frame" x="0.0" y="0.0" width="388" height="42.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="43.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frr-mR-Ytn">
-                                            <rect key="frame" x="20" y="11.000000000000002" width="348" height="20.666666666666671"/>
+                                            <rect key="frame" x="20" y="10.999999999999998" width="348" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -123,14 +126,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DatePickerCell" id="OdO-cn-buS" customClass="DatePickerCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="115.66666603088379" width="388" height="238.33332824707031"/>
+                                <rect key="frame" x="20" y="119.33333015441895" width="388" height="355.33334350585938"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OdO-cn-buS" id="Qo2-jz-OOH">
-                                    <rect key="frame" x="0.0" y="0.0" width="388" height="238.33332824707031"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="355.33334350585938"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <datePicker contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="DgV-mj-OAI" customClass="SectionDatePicker" customModule="ToDo" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="11" width="348" height="216.33333333333334"/>
+                                        <datePicker contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="DgV-mj-OAI" customClass="SectionDatePicker" customModule="ToDo" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="11" width="348" height="333.33333333333331"/>
                                         </datePicker>
                                     </subviews>
                                     <constraints>
@@ -145,7 +148,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="77" id="6dB-u5-J4j" customClass="ImageCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="353.9999942779541" width="388" height="77"/>
+                                <rect key="frame" x="20" y="474.66667366027832" width="388" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6dB-u5-J4j" id="FJl-Nk-ueh">
                                     <rect key="frame" x="0.0" y="0.0" width="388" height="77"/>
@@ -170,7 +173,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SwtichCell" id="1nh-mD-0Ab" customClass="SwtichCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="430.9999942779541" width="388" height="43.666667938232422"/>
+                                <rect key="frame" x="20" y="551.66667366027832" width="388" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1nh-mD-0Ab" id="n87-R3-7dt">
                                     <rect key="frame" x="0.0" y="0.0" width="388" height="43.666667938232422"/>

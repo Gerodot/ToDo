@@ -11,6 +11,14 @@ class ToDoItemTableViewController: UITableViewController{
 
     // MARK: - Properites
     var todo = ToDo()
+    
+    private var isDatePickerShown: Bool = false {
+        didSet {
+            
+        }
+    }
+    
+    private var datePicker: IndexPath?
 }
 
 // MARK: - UITableViewDataSource
@@ -44,7 +52,7 @@ extension ToDoItemTableViewController {
         if let cell = tableView.cellForRow(at: indexPath) {
             return cell.isHidden ? 0 : UITableView.automaticDimension
         } else {
-            return UITableView.automaticDimension //value is Date && indexPath.row == 1 ? 0 :
+            return value is Date && indexPath.row == 1 ? 0 : UITableView.automaticDimension
         }
     }
 
@@ -71,6 +79,7 @@ extension ToDoItemTableViewController {
                 cell.datePicker.date = dateValue
                 cell.datePicker.section = indexPath.section
                 cell.datePicker.minimumDate = Date()
+                datePicker = indexPath
                 return cell
 
             default:
@@ -152,11 +161,6 @@ extension ToDoItemTableViewController {
         let labelIndexPath = IndexPath(row: 0, section: section)
         tableView.reloadRows(at: [labelIndexPath], with: .automatic)
     }
-    
-    @objc func imageValueChaned(_ sender: SectionImagePickerController) {
-        let key = todo.keys[sender.section!]
-        let value = sender
-    }
 
     @objc func switchValueChanged(_ sender: SectionSwich) {
         let key = todo.keys[sender.section!]
@@ -187,8 +191,7 @@ extension ToDoItemTableViewController: UIImagePickerControllerDelegate {
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
+
 extension ToDoItemTableViewController: UINavigationControllerDelegate {
     
 }
-
-

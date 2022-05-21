@@ -22,15 +22,20 @@ class ToDoTableViewController: UITableViewController {
     }
 
     // MARK: - UITableViewDataSource
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return todos.count
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView
             .dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as! ToDoCell
-        let todo = todos[indexPath.row]
+        let todo = todos[indexPath.section]
         configure(cell, with: todo)
         return cell
 
@@ -60,25 +65,47 @@ class ToDoTableViewController: UITableViewController {
                 stackView.addArrangedSubview(label)
 
             } else if let boolValue = value as? Bool {
+                
+                let symbolConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large)
 
+                // image in label expertiment
+                let isChecked = NSTextAttachment()
+                let isUnchecked = NSTextAttachment()
+                isChecked.image = UIImage(systemName: "checkmark.square.fill", withConfiguration: symbolConfig)
+                isUnchecked.image = UIImage(systemName: "square", withConfiguration: symbolConfig)
                 let label = UILabel()
-                label.text = "\(key): \(boolValue ? "✅" : "☑️")"
+                label.attributedText = boolValue ? NSAttributedString(attachment: isChecked) : NSAttributedString(attachment: isUnchecked)
+                label.textColor = .systemBlue
                 stackView.addArrangedSubview(label)
+                
+                
+                // Button Experiment
+                let imageValue = boolValue ? isChecked.image : isUnchecked.image
+                let button = UIButton()
+                button.setImage(imageValue, for: .normal)
+                stackView.addArrangedSubview(button)
+                
+                
+                
 
             } else if let imageValue = value as? UIImage {
+                
+                
+                // image scaling byaspect and clipping
                 let imageView = UIImageView(image: imageValue)
-                imageView.heightAnchor.constraint(equalToConstant: CGFloat(300)).isActive = true
-//                let heightConstraint = NSLayoutConstraint(
-//                    item: imageView,
-//                    attribute: .height,
-//                    relatedBy: .equal,
-//                    toItem: nil,
-//                    attribute: .height,
-//                    multiplier: 1,
-//                    constant: 350
-//                )
-//                imageView.addConstraint(heightConstraint)
-                imageView.contentMode = .scaleAspectFit  
+                let heightConstraint = NSLayoutConstraint(
+                    item: imageView,
+                    attribute: .height,
+                    relatedBy: .equal,
+                    toItem: nil,
+                    attribute: .height,
+                    multiplier: 1,
+                    constant: stackView.frame.width
+                )
+                imageView.addConstraint(heightConstraint)
+                imageView.contentMode = .scaleAspectFill
+                imageView.clipsToBounds = true
+                imageView.layer.cornerRadius = 5
                 stackView.addArrangedSubview(imageView)
 
             }
@@ -92,7 +119,7 @@ class ToDoTableViewController: UITableViewController {
             let destination = segue.destination as? ToDoItemTableViewController
             else { return }
 
-        destination.todo = todos[selelctedIndex.row].copy() as! ToDo
+        destination.todo = todos[selelctedIndex.section].copy() as! ToDo
     }
 
     // MARK: - Actions
@@ -103,7 +130,7 @@ class ToDoTableViewController: UITableViewController {
             let source = segue.source as? ToDoItemTableViewController
             else { return }
 
-        todos[selecttedIndex.row] = source.todo
+        todos[selecttedIndex.section] = source.todo
 
         if let toDoCell = tableView.cellForRow(at: selecttedIndex) as? ToDoCell {
             if let stackView = toDoCell.stackView {

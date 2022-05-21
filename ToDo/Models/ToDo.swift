@@ -8,11 +8,11 @@
 import UIKit
 
 @objcMembers class ToDo: NSObject {
+    var image: UIImage?
     var title: String
     var isComplete: Bool
     var dueDate: Date
     var notes: String?
-    var image: UIImage?
 
     init (
         title: String = "",
