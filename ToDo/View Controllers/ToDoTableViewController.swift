@@ -48,6 +48,9 @@ class ToDoTableViewController: UITableViewController {
             stackView.arrangedSubviews.count == 0
         else { return }
         
+        let horisontalStack = UIStackView ()
+        horisontalStack.axis = .horizontal
+        
         for index in 0 ..< todo.keys.count {
             let key = todo.capitalizedKeys[index]
             let value = todo.values[index]
@@ -56,13 +59,13 @@ class ToDoTableViewController: UITableViewController {
 
                 let label = UILabel()
                 label.text = "\(key): \(stringValue)"
-                stackView.addArrangedSubview(label)
+                horisontalStack.addArrangedSubview(label)
 
             } else if let dateValue = value as? Date {
 
                 let label = UILabel()
                 label.text = "\(key): \(dateValue.formattedDate)"
-                stackView.addArrangedSubview(label)
+                horisontalStack.addArrangedSubview(label)
 
             } else if let boolValue = value as? Bool {
                 
@@ -76,17 +79,17 @@ class ToDoTableViewController: UITableViewController {
                 let label = UILabel()
                 label.attributedText = boolValue ? NSAttributedString(attachment: isChecked) : NSAttributedString(attachment: isUnchecked)
                 label.textColor = .systemBlue
-                stackView.addArrangedSubview(label)
+                horisontalStack.addArrangedSubview(label)
                 
                 
                 // Button Experiment
                 let imageValue = boolValue ? isChecked.image : isUnchecked.image
                 let button = UIButton()
                 button.setImage(imageValue, for: .normal)
-                stackView.addArrangedSubview(button)
+                horisontalStack.addArrangedSubview(button)
 
             } else if let imageValue = value as? UIImage {
-                
+                                
                 // image scaling byaspect and clipping
                 let imageView = UIImageView(image: imageValue)
                 let heightConstraint = NSLayoutConstraint(
@@ -105,8 +108,7 @@ class ToDoTableViewController: UITableViewController {
                 stackView.addArrangedSubview(imageView)
 
             }
-            
-            //TODO: - Place all elements except the image in a horizontal stack with paddings
+            stackView.addArrangedSubview(horisontalStack)
         }
     }
 
