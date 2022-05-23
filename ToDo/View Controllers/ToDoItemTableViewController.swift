@@ -93,9 +93,9 @@ extension ToDoItemTableViewController {
 
         } else if let boolValue = value as? Bool {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwtichCell") as! SwtichCell
-            cell.switchVoew.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
-            cell.switchVoew.section = indexPath.section
-            cell.switchVoew.isOn = boolValue
+            cell.switchView.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
+            cell.switchView.section = indexPath.section
+            cell.switchView.isOn = boolValue
             return cell
 
         } else {

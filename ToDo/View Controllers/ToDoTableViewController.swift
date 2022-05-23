@@ -11,14 +11,21 @@ class ToDoTableViewController: UITableViewController {
 
     var todos = [ToDo]()
 
+
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         todos = [
             ToDo(title: "Купить хлеб", image: UIImage(named: "bread")),
-            ToDo(title: "Постричь Ладу", isComplete: true, image: UIImage(named: "lada")),
+            ToDo(title: "Постричь Ладу", image: UIImage(named: "lada")),
             ToDo(title: "Подготовить презентацию", image: UIImage(named: "pitch"))
         ]
+
+        tableView.layer.masksToBounds = false
+        tableView.layer.shadowColor = UIColor.black.cgColor // any value you want
+        tableView.layer.shadowOpacity = 1 // any value you want
+        tableView.layer.shadowRadius = 10 // any value you want
+        tableView.layer.shadowOffset = .init(width: 10, height: 10) // any value you want
     }
 
     // MARK: - UITableViewDataSource
@@ -36,60 +43,75 @@ class ToDoTableViewController: UITableViewController {
         let cell = tableView
             .dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as! ToDoCell
         let todo = todos[indexPath.section]
-        configure(cell, with: todo)
+        configure(cell, with: todo, indexPath: indexPath)
         return cell
 
     }
 
     // MARK: - Cell Content
-    func configure(_ cell: ToDoCell, with todo: ToDo) {
+    func configure(_ cell: ToDoCell, with todo: ToDo, indexPath: IndexPath) {
         guard
             let stackView = cell.stackView,
             stackView.arrangedSubviews.count == 0
-        else { return }
-        
+            else { return }
+
+        stackView.spacing = 0
+
         let horisontalStack = UIStackView ()
         horisontalStack.axis = .horizontal
-        
+
+
         for index in 0 ..< todo.keys.count {
             let key = todo.capitalizedKeys[index]
             let value = todo.values[index]
 
             if let stringValue = value as? String {
 
+
                 let label = UILabel()
-                label.text = "\(key): \(stringValue)"
-                horisontalStack.addArrangedSubview(label)
+                label.text = stringValue
+                if key == "Notes" {
+                    stackView.addArrangedSubview(label)
+                } else {
+                    horisontalStack.addArrangedSubview(label)
+                }
 
             } else if let dateValue = value as? Date {
 
                 let label = UILabel()
-                label.text = "\(key): \(dateValue.formattedDate)"
+                label.text = dateValue.formattedDate
                 horisontalStack.addArrangedSubview(label)
 
             } else if let boolValue = value as? Bool {
-                
+
                 let symbolConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large)
 
-                // image in label expertiment
+                // image in button
                 let isChecked = NSTextAttachment()
                 let isUnchecked = NSTextAttachment()
                 isChecked.image = UIImage(systemName: "checkmark.square.fill", withConfiguration: symbolConfig)
                 isUnchecked.image = UIImage(systemName: "square", withConfiguration: symbolConfig)
-                let label = UILabel()
-                label.attributedText = boolValue ? NSAttributedString(attachment: isChecked) : NSAttributedString(attachment: isUnchecked)
-                label.textColor = .systemBlue
-                horisontalStack.addArrangedSubview(label)
-                
-                
-                // Button Experiment
-                let imageValue = boolValue ? isChecked.image : isUnchecked.image
+
+                // Button
                 let button = UIButton()
+                var imageValue = boolValue ? isChecked.image : isUnchecked.image
                 button.setImage(imageValue, for: .normal)
-                horisontalStack.addArrangedSubview(button)
+                button.addAction(UIAction(title: "", handler: { action in
+                    
+                    guard
+                        action.sender is UIButton
+                    else { return }
+                    
+                    self.todos[indexPath.section].isComplete.toggle()
+                    imageValue = self.todos[indexPath.section].isComplete ? isChecked.image : isUnchecked.image
+                    button.setImage(imageValue, for: .normal)
+                    
+                }), for: .touchUpInside)
+                
+                horisontalStack.insertArrangedSubview(button, at: 0)
 
             } else if let imageValue = value as? UIImage {
-                                
+
                 // image scaling byaspect and clipping
                 let imageView = UIImageView(image: imageValue)
                 let heightConstraint = NSLayoutConstraint(
@@ -108,7 +130,10 @@ class ToDoTableViewController: UITableViewController {
                 stackView.addArrangedSubview(imageView)
 
             }
+            horisontalStack.spacing = 10
             stackView.addArrangedSubview(horisontalStack)
+            horisontalStack.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            horisontalStack.isLayoutMarginsRelativeArrangement = true
         }
     }
 
