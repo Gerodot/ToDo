@@ -1,6 +1,5 @@
 #  ToDo
-
-Basic ToDo application
+Basic ToDo application with tasks displayed in the form of cards
 
 Implemented the basic functionality of the application.
 
