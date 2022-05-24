@@ -53,20 +53,18 @@ class ToDoTableViewController: UITableViewController {
         guard
             let stackView = cell.stackView,
             stackView.arrangedSubviews.count == 0
-            else { return }
+        else { return }
 
         stackView.spacing = 0
 
         let horisontalStack = UIStackView ()
         horisontalStack.axis = .horizontal
 
-
         for index in 0 ..< todo.keys.count {
             let key = todo.capitalizedKeys[index]
             let value = todo.values[index]
 
             if let stringValue = value as? String {
-
 
                 let label = UILabel()
                 label.text = stringValue
@@ -83,7 +81,8 @@ class ToDoTableViewController: UITableViewController {
                 horisontalStack.addArrangedSubview(label)
 
             } else if let boolValue = value as? Bool {
-
+                
+                // Configure button font
                 let symbolConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large)
 
                 // image in button
@@ -96,11 +95,10 @@ class ToDoTableViewController: UITableViewController {
                 let button = UIButton()
                 var imageValue = boolValue ? isChecked.image : isUnchecked.image
                 button.setImage(imageValue, for: .normal)
+                
+                // Add action to button
                 button.addAction(UIAction(title: "", handler: { action in
-                    
-                    guard
-                        action.sender is UIButton
-                    else { return }
+                    guard action.sender is UIButton else { return }
                     
                     self.todos[indexPath.section].isComplete.toggle()
                     imageValue = self.todos[indexPath.section].isComplete ? isChecked.image : isUnchecked.image
@@ -108,6 +106,7 @@ class ToDoTableViewController: UITableViewController {
                     
                 }), for: .touchUpInside)
                 
+                // Add button on first place in horisontal stack
                 horisontalStack.insertArrangedSubview(button, at: 0)
 
             } else if let imageValue = value as? UIImage {
@@ -130,6 +129,8 @@ class ToDoTableViewController: UITableViewController {
                 stackView.addArrangedSubview(imageView)
 
             }
+            
+            // Add horisontal stack view in vertical stack
             horisontalStack.spacing = 10
             stackView.addArrangedSubview(horisontalStack)
             horisontalStack.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -142,7 +143,7 @@ class ToDoTableViewController: UITableViewController {
         segue.identifier == "ToDoItemSeguee",
             let selelctedIndex = tableView.indexPathForSelectedRow,
             let destination = segue.destination as? ToDoItemTableViewController
-            else { return }
+        else { return }
 
         destination.todo = todos[selelctedIndex.section].copy() as! ToDo
     }
@@ -153,7 +154,7 @@ class ToDoTableViewController: UITableViewController {
         segue.identifier == "SaveSegue",
             let selecttedIndex = tableView.indexPathForSelectedRow,
             let source = segue.source as? ToDoItemTableViewController
-            else { return }
+        else { return }
 
         todos[selecttedIndex.section] = source.todo
 
