@@ -9,7 +9,11 @@ import UIKit
 
 class ToDoTableViewController: UITableViewController {
 
-    var todos = [ToDo]()
+    var todos = [ToDo]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
 
     // MARK: - UIViewController
@@ -50,11 +54,13 @@ class ToDoTableViewController: UITableViewController {
 
     // MARK: - Cell Content
     func configure(_ cell: ToDoCell, with todo: ToDo, indexPath: IndexPath) {
-        guard
-            let stackView = cell.stackView,
-            stackView.arrangedSubviews.count == 0
-        else { return }
+        guard let stackView = cell.stackView else { return }
 
+        stackView.arrangedSubviews.forEach { subview in
+            stackView.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
+        
         stackView.spacing = 0
 
         let horisontalStack = UIStackView ()
@@ -144,28 +150,19 @@ class ToDoTableViewController: UITableViewController {
             let selelctedIndex = tableView.indexPathForSelectedRow,
             let destination = segue.destination as? ToDoItemTableViewController
         else { return }
-
+        
         destination.todo = todos[selelctedIndex.section].copy() as! ToDo
     }
 
     // MARK: - Actions
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         guard
-        segue.identifier == "SaveSegue",
+            segue.identifier == "SaveSegue",
             let selecttedIndex = tableView.indexPathForSelectedRow,
             let source = segue.source as? ToDoItemTableViewController
         else { return }
-
+        
         todos[selecttedIndex.section] = source.todo
-
-        if let toDoCell = tableView.cellForRow(at: selecttedIndex) as? ToDoCell {
-            if let stackView = toDoCell.stackView {
-                stackView.arrangedSubviews.forEach { subview in
-                    stackView.removeArrangedSubview(subview)
-                    subview.removeFromSuperview()
-                }
-            }
-            tableView.reloadRows(at: [selecttedIndex], with: .automatic)
-        }
+        tableView.reloadRows(at: [selecttedIndex], with: .automatic)
     }
 }
